@@ -7,7 +7,7 @@ export interface QueryOptions {
   role?: string;
   relationFilters?: any[];
 }
-
+// minor change
 export const dynamicQueryBuilder = async ({
   model,
   query,
