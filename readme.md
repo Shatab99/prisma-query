@@ -8,13 +8,13 @@ Drop it into your Node.js / TypeScript project to avoid rewriting the same query
 ## 🚀 Installation
 
 ```bash
-npm install prisma-dynamic-query
+npm i prisma-query-shatab
 ```
 
 or with yarn:
 
 ```bash
-yarn add prisma-dynamic-query
+yarn add prisma-query-shatab
 ```
 
 ---
@@ -23,13 +23,13 @@ yarn add prisma-dynamic-query
 
 ### Import
 ```ts
-import { dynamicQueryBuilder } from "prisma-dynamic-query";
+import { dynamicQueryBuilder } from "prisma-query-shatab";
 ```
 
 ### Example (basic)
 ```ts
 import { PrismaClient } from "@prisma/client";
-import { dynamicQueryBuilder } from "prisma-dynamic-query";
+import { dynamicQueryBuilder } from "prisma-query-shatab";
 
 const prisma = new PrismaClient();
 
@@ -51,7 +51,7 @@ async function getUsers(query: any) {
 ```ts
 import express from "express";
 import { PrismaClient } from "@prisma/client";
-import { dynamicQueryBuilder } from "prisma-dynamic-query";
+import { dynamicQueryBuilder } from "prisma-query-shatab";
 
 const app = express();
 const prisma = new PrismaClient();
@@ -151,7 +151,7 @@ npm link prisma-dynamic-query
 **package.json** (important bits)
 ```json
 {
-  "name": "prisma-dynamic-query",
+  "name": "prisma-query-shatab",
   "version": "1.0.0",
   "type": "module",
   "main": "dist/index.cjs.js",
@@ -198,52 +198,6 @@ npm link prisma-dynamic-query
 
 - The `tsup` command will emit both `cjs` and `esm` bundles plus `.d.ts` types.
 - `peerDependencies` ensures the host project provides `@prisma/client`.
-
----
-
-## 🚢 Auto-publish (GitHub Actions)
-
-Create `.github/workflows/publish.yml`:
-
-```yaml
-name: Publish Package to npm
-
-on:
-  push:
-    tags:
-      - "v*"
-
-jobs:
-  publish:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-          registry-url: "https://registry.npmjs.org/"
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build
-        run: npm run build
-
-      - name: Publish
-        run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-```
-
-- Create an `NPM_TOKEN` secret in your repo (GitHub → Settings → Secrets → Actions).
-- Tag releases with `npm version` and push tags:
-```bash
-npm version patch   # creates tag vX.Y.Z
-git push --follow-tags
-```
 
 ---
 
