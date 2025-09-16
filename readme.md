@@ -61,7 +61,7 @@ app.get("/users", async (req, res) => {
     const result = await dynamicQueryBuilder({
       model: prisma.user,
       query: req.query,
-      searchableFields: ["name", "email"],
+      searchableFields: ["name", "email", "profile.city", "profile.gender"],
       forcedFilters: { isActive: true },
       includes: { profile: true },
     });
