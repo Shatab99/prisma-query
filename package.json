@@ -1,6 +1,6 @@
 {
   "name": "prisma-query-shatab",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "basically it will help you to make reduce your code in prisma and make efficient to read the code. so you can use this package to make your express or node js app very easy ",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
